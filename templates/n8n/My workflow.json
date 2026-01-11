@@ -1,0 +1,321 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "={{$node[\"Edit Fields\"].json.URL }}/parse_document",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "start_date",
+              "value": "={{$node[\"Code\"].json.start_date}}"
+            },
+            {
+              "name": "end_date",
+              "value": "={{$node[\"Code\"].json.end_date}}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          },
+          "timeout": 3600000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        0
+      ],
+      "id": "c2f16aa1-36ae-4c3a-8238-87f3d8642d6d",
+      "name": "HTTP Request - parse_document",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "BG6odjSdWQc84LYP",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const yesterday = new Date();\nyesterday.setDate(yesterday.getDate() - 1);\n\nconst year = yesterday.getFullYear();\nconst month = String(yesterday.getMonth() + 1).padStart(2, '0');\nconst day = String(yesterday.getDate()).padStart(2, '0');\n\nconst dateStr = `${year}-${month}-${day}`;\n\nreturn [{\n  json: {\n    start_date: \"2021-01-01\", /**dateStr cuando terminen las pruebas **/\n    end_date: \"2021-12-31\"  /**dateStr cuando terminen las pruebas **/\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ],
+      "id": "9dca1afe-b699-48da-8288-cb9328afe8ab",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "beea0745-9b88-42c0-aaed-73c5534840ec",
+      "name": "Schedule Trigger",
+      "disabled": true
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "c54421df-6ea1-4797-b0a7-fde94774ec4c",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "={{$node[\"Edit Fields\"].json.URL }}/structure_data",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "start_date",
+              "value": "={{ $node[\"Code\"].json.start_date }}"
+            },
+            {
+              "name": "end_date",
+              "value": "={{ $node[\"Code\"].json.end_date }}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 300000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1320,
+        0
+      ],
+      "id": "7c979697-6dc7-48f2-b2df-36a91be89242",
+      "name": "HTTP Request - structure_data",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "BG6odjSdWQc84LYP",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{$node[\"Edit Fields\"].json.URL }}/remove_password ",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "start_date",
+              "value": "={{$node[\"Code\"].json.start_date}}"
+            },
+            {
+              "name": "end_date",
+              "value": "={{$node[\"Code\"].json.end_date}}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          },
+          "timeout": 300000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        0
+      ],
+      "id": "05be5496-7765-4935-8129-39a1b84c9354",
+      "name": "HTTP Request - remove_password",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "BG6odjSdWQc84LYP",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{$node[\"Edit Fields\"].json.URL }}/process_data",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "start_date",
+              "value": "={{$node[\"Code\"].json.start_date}}"
+            },
+            {
+              "name": "end_date",
+              "value": "={{$node[\"Code\"].json.end_date}}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          },
+          "timeout": 300000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1540,
+        0
+      ],
+      "id": "90d0c06d-314b-4084-a508-3ada9ee8b829",
+      "name": "HTTP Request - process_data",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "BG6odjSdWQc84LYP",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "414589a0-6372-411f-94df-33db16a284bb",
+              "name": "URL",
+              "value": "https://darki-intranet-dev-finance-automations.9uxguk.easypanel.host",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        660,
+        0
+      ],
+      "id": "3f864aef-9df8-43d7-bde8-aef10b0c2329",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        []
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request - parse_document": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request - structure_data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request - remove_password": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request - parse_document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request - structure_data": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request - process_data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request - remove_password",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "9293ddcf-0ed9-4971-a309-5fffecd75e79",
+  "meta": {
+    "instanceId": "24efd84f60313c6a283ee25cf5bac76bf521d5cef0ddf855ace7364b5bfeb659"
+  },
+  "id": "OBbyUouaOXRyW3dR",
+  "tags": []
+}

@@ -1,0 +1,24 @@
+# Git
+.git
+.gitignore
+.gitmodules
+
+# Standards
+.standards
+
+# Local files
+.env
+*.pyc
+__pycache__/
+cuentas_pdf/
+debug_outputs/
+docs/
+parsed_json/
+prompts/
+templates/
+unlocked_pdf/
+
+# Development
+.pre-commit-config.yaml
+PULL_REQUEST_TEMPLATE.md
+README.md

@@ -1,0 +1,15 @@
+services:
+  finance-unified-base-api:
+    container_name: finance-unified-base-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./secrets:/app/secrets:ro
+      - ./cuentas_pdf:/app/cuentas_pdf
+      - ./unlocked_pdf:/app/unlocked_pdf
+    restart: unless-stopped
