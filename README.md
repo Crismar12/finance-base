@@ -1,6 +1,34 @@
 # Finance Unified Base
+🚀 Automating Financial Data Processing with Python + AI
+I've developed an application that transforms credit card statements into structured data ready for analysis, eliminating repetitive manual work.
 
-## Pipeline Steps
+How does the pipeline work?
+
+1️⃣ Extraction: Unlocks PDFs and processes them with the OpenAI API
+<img width="1023" height="277" alt="image" src="https://github.com/user-attachments/assets/46ae3d08-3fa4-4696-9a80-f95b319bdc88" />
+<img width="402" height="308" alt="image" src="https://github.com/user-attachments/assets/2c18006f-b0b8-4fe7-a1fa-d455f3ef6ee4" />
+
+
+2️⃣ Structuring: Transforms unstructured data into organized Parquet tables
+<img width="1618" height="483" alt="image" src="https://github.com/user-attachments/assets/71224e50-3823-462c-bde7-b8be064b0a7a" />
+
+
+3️⃣ Storage: Consolidates everything into a data lake on Google Cloud Storage (bronze/silver tiers)
+Technical Stack:
+<img width="492" height="690" alt="image" src="https://github.com/user-attachments/assets/56454362-dbf2-44aa-b090-16f6c4c85ec1" />
+
+
+• Python + Flask (REST API)
+
+• OpenAI API for intelligent parsing
+
+• Google Cloud Storage for scalable storage
+
+• n8n for workflow orchestration
+
+• Docker for deployment
+
+The result: Financial data ready for dashboards, reports, and analysis in minutes, not hours.
 
 ### Banco Estado Credit Card Statements (MVP)
 
