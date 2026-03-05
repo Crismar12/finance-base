@@ -1,3 +1,6 @@
+### Note: 
+For confidentiality and data privacy reasons, sensitive data and environment variables have been removed. This repository serves as an architectural demonstration of the ETL pipeline / API logic.
+
 # 💳 Finance Unified Base  
 **Financial Data Analytics Project**
 
