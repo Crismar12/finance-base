@@ -24,4 +24,4 @@ A data analytics pipeline that transforms **credit card statements (PDFs)** into
 - Financial reporting  
 - Dashboard-ready datasets  
 
-📊 Built with a strong focus on **data analysis, not just infrastructure**.
+
