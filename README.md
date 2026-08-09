@@ -16,7 +16,7 @@ A data analytics pipeline that transforms **credit card statements (PDFs)** into
   
 <img width="492" height="690" alt="finance-base4" src="https://github.com/user-attachments/assets/a47c74a3-b791-4d2a-b6a5-d78f083d8753" />
 
-<img width="1618" height="483" alt="finance-base1" src="https://github.com/user-attachments/assets/a3f3c0c8-e4d7-4cf5-9d49-0306cfe0ae82" />
+<img width="402" height="308" alt="finance-base3" src="https://github.com/user-attachments/assets/ce43db7f-f8fb-4312-a5d7-ba95f0c92a0a" />
 
 
 ### Key skills showcased
